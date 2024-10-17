@@ -1,35 +1,62 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { StrictMode,useState } from 'react'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [cont, setCont] = useState(0);      
+  const [showTitle, setShowTitle] = useState(true); 
+  const [text, setText] = useState("");     
+  const [theme, setTheme] = useState(false); 
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
+     
+      <button onClick={() => setTheme(!theme)}>
+        TROCAR COR DO FUNDO
+      </button>
+      
+      
+      {theme ? (
+        <div className='fundo-preto'>
+          {showTitle && <h1>BALACOBACO</h1>}
+          <input 
+            type="text" 
+            placeholder="Digite seu nome" 
+            onChange={(e) => setText(e.target.value)} 
+          />
+        </div>
+      ) : (
+        <div className='fundo-branco'>
+          {showTitle && <h1>BALACOBACO</h1>}
+          <input 
+            type="text" 
+            placeholder="Digite seu nome" 
+            onChange={(e) => setText(e.target.value)} 
+          />
+        </div>
+      )}
+
+      
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+        <button onClick={() => setCont(cont + 10)}>
+           {cont}
         </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+        <button onClick={() => setCont(cont - 10)}>
+          {cont}
+        </button>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+
+      
+      <button onClick={() => setShowTitle(!showTitle)}>
+        {showTitle ? "Esconder Título" : "Mostrar Título"}
+      </button>
+
+      
+      <div>
+        <p>Texto atual: {text}</p>
+        {text === "SENAI" && <p>Apareci!</p>}
+      </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

@@ -5,6 +5,6 @@ import './index.css'
 import HelloWorld from './HelloWolrd.jsx'
 
 createRoot(document.getElementById('root')).render(
-    <HelloWorld />
+    <App />
   
 )
